@@ -1,0 +1,35 @@
+<router-outlet></router-outlet>
+
+<ng-container>
+  <div class="form-search">
+    <mat-form-field class="search-bar">
+      <input matInput type="text" placeholder="e.g. Search term" [(ngModel)]="searchText" (keyup.enter)="searchNotes()"
+        autocomplete="off">
+      <button mat-button matSuffix mat-icon-button aria-label="Search">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</ng-container>
+
+<ng-container *ngFor="let note of getNotes()">
+  <div class="note">
+    <span class="note-text">{{note.text}}</span>
+    <button class="note-delete" mat-button mat-icon-button aria-label="Delete" (click)="deleteNote(this.note)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</ng-container>
+
+
+<ng-container>
+  <div class="form-addnotes">
+    <mat-form-field class="addnotes-bar">
+      <input matInput type="text" placeholder="e.g. Hire Joe" [(ngModel)]="addNoteText" (keyup.enter)="submitNote()"
+        autocomplete="off">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="submitNote()" *ngIf="addNoteText">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</ng-container>

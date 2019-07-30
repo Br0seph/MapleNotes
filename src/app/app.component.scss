@@ -1,0 +1,22 @@
+.note {
+    background: rgba(247, 255, 130, 0.2);
+    border-bottom: 1px solid black;
+}
+
+.form-search {
+    width: 100%;
+    text-align: center;
+
+    & .search-bar {
+        margin: auto;
+        width: 50%;
+    }
+}
+
+.form-addnotes {
+    width: 100%;
+    
+    & .addnotes-bar {
+        width: inherit;
+    }
+}
