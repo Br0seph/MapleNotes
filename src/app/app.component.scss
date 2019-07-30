@@ -1,6 +1,10 @@
 .note {
     background: rgba(247, 255, 130, 0.2);
     border-bottom: 1px solid black;
+
+    & .note-text {
+        margin: 5px;
+    }
 }
 
 .form-search {
