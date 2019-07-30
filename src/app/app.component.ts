@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   addNote(noteText) {
     if (!noteText) {
-      // TODO: Error msg: "can't be blank, pal"
+      // TODO: Error msg
       return;
     }
 
@@ -37,11 +37,15 @@ export class AppComponent implements OnInit {
 
   deleteNote(noteToDelete: ToDoItem) {
     if (!noteToDelete) {
-      // TODO: Error msg "how you even doing this if it's falsy, pal"
+      // TODO: Error msg
       return;
     }
 
     this.todoNotes = this.todoNotes.filter(note => note !== noteToDelete);
+  }
+
+  getNotes() {
+    return this.searchText ? this.filteredNotes() : this.todoNotes;
   }
 
   filteredNotes() {
@@ -59,9 +63,5 @@ export class AppComponent implements OnInit {
     }
 
     return text.toLowerCase();
-  }
-
-  getNotes() {
-    return this.searchText ? this.filteredNotes() : this.todoNotes;
   }
 }
