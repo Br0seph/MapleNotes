@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   todoNotes: Array<ToDoItem> = [];
   addNoteText: string;
   searchText: string;
+  matchCase: boolean;
 
   ngOnInit() {
     this.addNote('Example note');
@@ -44,7 +45,20 @@ export class AppComponent implements OnInit {
   }
 
   filteredNotes() {
-    return this.todoNotes.filter(note => note.text.includes(this.searchText));
+    if (this.matchCase) {
+      return this.todoNotes.filter(note => note.text.includes(this.searchText));
+    }
+
+    const searchTerm = this.lowercaseText(this.searchText);
+    return this.todoNotes.filter(note => this.lowercaseText(note.text).includes(searchTerm));
+  }
+
+  lowercaseText(text: string) {
+    if (!text) {
+      return;
+    }
+
+    return text.toLowerCase();
   }
 
   getNotes() {
